@@ -33,6 +33,7 @@ Example Playbook
               key: https://www.postgresql.org/media/keys/ACCC4CF8.asc
             - repo: deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx
               key: http://nginx.org/keys/nginx_signing.key
+            - repo: ppa:lesovsky/pgcenter
 
 License
 -------
