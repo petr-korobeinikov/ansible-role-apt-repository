@@ -27,7 +27,7 @@ Example Playbook
     - hosts: localhost
       become: true
       roles:
-        - role: ansible-role-apt-repository
+        - role: pkorobeinikov.apt-repository
           apt_repository_repositories:
             - repo: deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main
               key: https://www.postgresql.org/media/keys/ACCC4CF8.asc
