@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/pkorobeinikov/ansible-role-apt-repository.svg?branch=master)](https://travis-ci.org/pkorobeinikov/ansible-role-apt-repository)
 
-ansible-role-apt-repository
-===========================
+pkorobeinikov.apt-repository
+============================
 
 Apt repository installation.
 
