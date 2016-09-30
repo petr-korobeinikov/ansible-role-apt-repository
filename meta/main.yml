@@ -10,6 +10,9 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - trusty
+    - name: Debian
+      versions:
+        - jessie
 
   galaxy_tags:
     - apt
