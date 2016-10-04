@@ -1,4 +1,10 @@
 ---
+- name: install apt-transport-https
+  apt:
+    name: apt-transport-https
+    state: present
+  when: apt_repository_enable_https
+
 - name: add apt repo
   apt_repository: repo='{{ item.repo }}' state=present
   with_items: "{{ apt_repository_repositories }}"
