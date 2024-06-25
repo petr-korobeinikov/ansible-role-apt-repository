@@ -1,14 +1,29 @@
 ---
 - name: add apt repo
-  apt_repository: repo='{{ item.repo }}' state=present
+  ansible.builtin.apt_repository:
+    codename: "{{ item.codename|default(omit) }}"
+    filename: "{{ item.filename|default(omit) }}"
+    install_python_apt: "{{ item.install_python_apt|default(omit) }}"
+    mode: "{{ item.mode|default(omit) }}"
+    repo: "{{ item.repo }}"
+    state: "{{ item.state|default('present') }}"
+    update_cache: "{{ item.update_cache|default(omit) }}"
+    update_cache_retries: "{{ item.update_cache_retries|default(omit) }}"
+    update_cache_retry_max_delay: "{{ item.update_cache_retry_max_delay|default(omit) }}"
+    validate_certs: "{{ item.validate_certs|default(omit) }}"
   with_items: "{{ apt_repository_repositories }}"
   register: result
 
 - name: add apt key
-  apt_key: "url={{ item.key }} state=present"
+  ansible.builtin.apt_key:
+    url: "{{ item.key }}"
+    state: "present"
   with_items: "{{ apt_repository_repositories }}"
-  when: item.key is defined
+  when:
+    - item.key is defined
+    - item.state is not defined or item.state is 'present'
 
 - name: update apt cache
-  apt: update_cache=yes
+  ansible.builtin.apt:
+    update_cache: 'yes'
   when: result|changed
