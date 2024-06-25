@@ -21,9 +21,9 @@
   with_items: "{{ apt_repository_repositories }}"
   when:
     - item.key is defined
-    - item.state is not defined or item.state is 'present'
+    - (item.state is not defined or item.state == 'present')
 
 - name: update apt cache
   ansible.builtin.apt:
     update_cache: 'yes'
-  when: result|changed
+  when: result.changed == 'changed'
